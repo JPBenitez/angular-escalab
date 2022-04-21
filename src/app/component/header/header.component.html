@@ -1,0 +1,28 @@
+<nav>
+    <div>
+        <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/character" >Personaje</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/location" >Ubicacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/episodes" >Capitulos</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                    <button class="btn btn-outline-danger" (click)="auth.logout({ returnTo: document.location.origin })">
+                      Salir
+                    </button>
+                  </ng-container>
+              
+                  <ng-template #loggedOut>
+                    <button class="btn btn-outline-success" (click)="auth.loginWithRedirect()">Ingresar</button>
+                  </ng-template>
+            </form>
+        </div>
+    </div>
+</nav>
